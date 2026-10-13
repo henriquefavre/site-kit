@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.DS_Store
+
+# Created only by scripts/cloudflare-build.sh on the Cloudflare build machine
+.site-kit/
+/pnpm-workspace.yaml
+/pnpm-lock.yaml

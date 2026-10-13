@@ -1,0 +1,23 @@
+/* __SITE_NAME__ · every colour and font is a token here (site-kit/support.css uses the same tokens). */
+:root {
+  --bg: #ffffff; --surface: #f6f7f9; --line: #e3e6eb; --ink: #1b2230; --ink-2: #4a5160; --ink-3: #5f6574;
+  --accent: #2f6fdb; --accent-ink: #2459b5; --accent-soft: #e4edfb; --on-accent: #ffffff;
+  --warn: #9a6200; --good: #0b7a0b;
+  --body: system-ui, "Segoe UI", sans-serif; --display: var(--body); --mono: ui-monospace, "Cascadia Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218; --surface: #181c24; --line: #2a303b; --ink: #eef0f4; --ink-2: #b7bdc8; --ink-3: #8e95a2;
+    --accent-ink: #9dbcf2; --accent-soft: #1c2a44; --warn: #f0b84a; --good: #5fcf5f; color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+.wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 72px; display: flex; flex-direction: column; gap: 32px; }
+h1 { font-family: var(--display); font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 0; }
+h2 { font-family: var(--display); font-size: 22px; margin: 0; }
+section { display: flex; flex-direction: column; gap: 12px; }
+.lede, .sub { color: var(--ink-2); margin: 0; max-width: 64ch; }
+.foot { border-top: 1px solid var(--line); padding-top: 18px; font-size: 13px; color: var(--ink-3); }

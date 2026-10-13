@@ -1,0 +1,20 @@
+# Every folder next to this file that has a package.json is part of the workspace.
+# One shared install: libraries are stored once on disk and linked into each site.
+packages:
+  - '*'
+
+# Packages allowed to run install scripts (they download their own binaries).
+allowBuilds:
+  esbuild: true
+  workerd: true
+
+# One place for library versions. Sites write "catalog:" instead of a version.
+catalog:
+  '@cloudflare/workers-types': ^5.20260924.1
+  '@noble/hashes': ^1.5.0
+  '@types/qrcode': ^1.5.5
+  qrcode: ^1.5.4
+  tsx: ^4.19.1
+  typescript: ^5.6.3
+  vite: ^5.4.10
+  wrangler: ^4.139.0

@@ -1,0 +1,3 @@
+# The Sites folder only tracks the workspace files; every site (and site-kit) is its own repo.
+/*/
+node_modules/

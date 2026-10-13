@@ -1,0 +1,19 @@
+// Cloudflare Worker config: serves dist/ and handles /api/contact.
+// Contact form setup (one time, in Cloudflare): Email > Email Routing > enable, and verify the inbox in CONTACT_TO.
+{
+  "name": "__SLUG__",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-09-24",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  // "routes": [{ "pattern": "__DOMAIN__", "custom_domain": true }],
+  "send_email": [{ "name": "EMAIL" }],
+  "vars": {
+    // REPLACE: the inbox that receives contact messages (must be a verified destination address in Email Routing)
+    "CONTACT_TO": "you@example.com",
+    "CONTACT_FROM": "contact@__DOMAIN__"
+  }
+}

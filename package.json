@@ -1,0 +1,30 @@
+{
+  "name": "site-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared building blocks for our sites: tips and crypto donations, contact form (+ Cloudflare Worker), exit ask, base config.",
+  "exports": {
+    "./donate": "./src/donate.ts",
+    "./addresses": "./src/addresses.ts",
+    "./contact": "./src/contact.ts",
+    "./exit-ask": "./src/exit-ask.ts",
+    "./types": "./src/types.ts",
+    "./worker": "./worker/index.ts",
+    "./support.css": "./styles/support.css",
+    "./tsconfig.base.json": "./tsconfig.base.json"
+  },
+  "scripts": {
+    "check": "tsc --noEmit && tsc -p worker/tsconfig.json && tsx scripts/check-addresses.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "catalog:",
+    "qrcode": "catalog:"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "@types/qrcode": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

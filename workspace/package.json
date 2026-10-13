@@ -1,0 +1,10 @@
+{
+  "name": "sites",
+  "private": true,
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "new-site": "node site-kit/scripts/new-site.mjs",
+    "check": "pnpm -r --if-present run check",
+    "build": "pnpm -r --if-present run build"
+  }
+}

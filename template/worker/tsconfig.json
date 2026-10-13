@@ -1,0 +1,4 @@
+{
+  "extends": "../../site-kit/worker/tsconfig.json",
+  "include": ["index.ts"]
+}

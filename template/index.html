@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>__SITE_NAME__</title>
+  <meta name="description" content="">
+  <link rel="canonical" href="https://__DOMAIN__/">
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <aside class="tipbar" id="tipbar" aria-label="Support the project" hidden>
+    <span>Free, no ads, nothing saved.</span>
+    <a id="tipbar-link" href="#" target="_blank" rel="noopener">Support the project</a>
+  </aside>
+
+  <main class="wrap">
+    <header>
+      <h1>__SITE_NAME__</h1>
+      <p class="lede">One sentence on what this site does.</p>
+    </header>
+
+    <section>
+      <h2>Your content</h2>
+      <p class="sub">Build the site here.</p>
+    </section>
+
+    <aside class="donate" id="donate" hidden aria-labelledby="donate-title">
+      <div class="donate-text">
+        <h2 id="donate-title">Was this useful?</h2>
+        <p>A small tip keeps __SITE_NAME__ free and online.</p>
+      </div>
+      <div class="donate-actions">
+        <a class="tip-btn" id="tip-btn" href="#" target="_blank" rel="noopener" hidden></a>
+        <details class="crypto" id="crypto" hidden>
+          <summary>Prefer crypto?</summary>
+          <div class="crypto-list" id="crypto-list"></div>
+        </details>
+      </div>
+    </aside>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p class="sub">Questions or ideas? Your message is emailed to us and used only to reply.</p>
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field"><label for="c-name">Name <span class="opt">(optional)</span></label><input id="c-name" name="name" type="text" maxlength="100" autocomplete="name"></div>
+        <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" maxlength="200" required autocomplete="email"></div>
+        <div class="field full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" maxlength="5000" required></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="c-web">Website</label><input id="c-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div id="turnstile" class="full"></div>
+        <div class="full form-row"><button type="submit" class="tip-btn">Send message</button><p id="contact-status" class="form-status" role="status"></p></div>
+      </form>
+    </section>
+
+    <footer class="foot">
+      <p>No accounts, cookies or trackers.</p>
+    </footer>
+  </main>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+/* site-kit · styles for the shared widgets: tip bar, donate box, crypto QR codes, floating tip button,
+   "before you go" card and contact form. Import it BEFORE your site's own style.css so the site can override it.
+   It only uses these tokens, which each site defines on :root:
+   --bg --surface --line --ink --ink-2 --ink-3 --accent --accent-ink --accent-soft --on-accent --good --warn --body --mono */
+
+:root { --tipbar-h: 0px; }
+
+/* Top tip bar */
+.tipbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; padding: 8px 16px; font-size: 13px; background: var(--accent); color: var(--on-accent); text-align: center; }
+.tipbar a { color: var(--on-accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Donate box */
+.donate { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px 28px; align-items: start; padding: 20px; border-radius: 18px; background: var(--accent-soft); }
+@media (max-width: 680px) { .donate { grid-template-columns: 1fr; } }
+.donate h2 { font-size: 20px; margin: 0; }
+.donate p { margin: 6px 0 0; color: var(--ink-2); }
+.donate-actions { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tip-btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 600; font-size: 16px; text-decoration: none; }
+.tip-btn:hover { filter: brightness(1.08); }
+.tip-btn:focus-visible, .copy:focus-visible, .crypto summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Crypto */
+.crypto summary { cursor: pointer; color: var(--ink-2); font-size: 14px; font-weight: 500; }
+.crypto-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+.coin-toggle { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); align-self: flex-start; }
+.coin-toggle button { border: 0; background: transparent; color: var(--ink-2); font: 600 13px var(--body); padding: 6px 16px; border-radius: 999px; cursor: pointer; }
+.coin-toggle button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.coin-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.coin { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center; }
+.coin .qr { width: 96px; height: 96px; background: #fff; border-radius: 6px; padding: 4px; }
+.coin .qr svg { display: block; width: 100%; height: 100%; }
+.coin .name { font-weight: 600; font-size: 14px; }
+.coin .net { font-size: 12px; color: var(--ink-3); }
+.coin code { display: block; font: 12px/1.4 var(--mono); word-break: break-all; color: var(--ink); margin: 4px 0 6px; user-select: all; }
+.copy { font: 600 12px var(--body); color: var(--accent-ink); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+
+/* Floating tip button */
+.tip-float {
+  position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: max(18px, env(safe-area-inset-bottom, 0px)); z-index: 40;
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px 12px 15px; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent); font: 700 15px var(--body); text-decoration: none;
+  box-shadow: 0 10px 28px -8px rgba(29, 36, 51, .45), 0 2px 6px rgba(29, 36, 51, .15);
+  opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .3s ease, transform .3s ease;
+}
+.tip-float.show { opacity: 1; transform: none; pointer-events: auto; }
+.tip-float:hover { filter: brightness(1.06); }
+.tip-float:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.tip-float svg { flex: none; }
+@media (max-width: 560px) { .tip-float { padding: 11px 15px 11px 13px; font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { .tip-float { transition: none; } }
+
+/* "Before you go" card */
+.exit-ask { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 28px 24px 18px; border: 1px solid var(--accent); border-radius: 16px; background: var(--bg); color: var(--ink); text-align: center; box-shadow: 0 24px 60px rgba(20, 16, 14, .28); }
+.exit-ask::backdrop { background: rgba(29, 36, 51, .45); }
+.exit-ask[open] { animation: exit-in .22s ease-out; }
+@keyframes exit-in { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+.exit-ask img { display: block; margin: 0 auto 8px; border-radius: 50%; }
+.exit-ask h2 { margin: 0; font-size: 22px; }
+.exit-ask p { margin: 10px 0 0; color: var(--ink-2); }
+.exit-ask .exit-you { color: var(--ink); }
+.exit-ask .exit-you b { color: var(--accent-ink); }
+.exit-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+.exit-actions .tip-btn { width: 100%; }
+.exit-later, .exit-crypto, .exit-x { font: 500 14px var(--body); color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 8px; border-radius: 6px; }
+.exit-later:hover, .exit-crypto:hover { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.exit-crypto { margin-top: 2px; font-size: 13px; }
+.exit-x { position: absolute; top: 6px; right: 8px; font-size: 24px; line-height: 1; padding: 4px 10px; }
+.exit-later:focus-visible, .exit-crypto:focus-visible, .exit-x:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .exit-ask[open] { animation: none; } }
+
+/* Contact form */
+.contact-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 16px; max-width: 720px; }
+@media (max-width: 560px) { .contact-form { grid-template-columns: 1fr; } }
+.contact-form .full { grid-column: 1 / -1; }
+.contact-form .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.contact-form label { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.contact-form input, .contact-form textarea { font: 15px/1.5 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 11px; width: 100%; }
+.contact-form textarea { resize: vertical; }
+.contact-form textarea:focus-visible, .contact-form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt { text-transform: none; font-weight: 400; color: var(--ink-3); letter-spacing: 0; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.form-row .tip-btn { border: 0; cursor: pointer; font-family: var(--body); }
+.form-row .tip-btn:disabled { opacity: .6; cursor: default; }
+.form-status { margin: 0; font-size: 14px; color: var(--ink-2); }
+.form-status.ok { color: var(--good); }
+.form-status.err { color: var(--warn); }

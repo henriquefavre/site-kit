@@ -1,0 +1,22 @@
+{
+  "name": "__SLUG__",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && tsc -p worker/tsconfig.json && vite build",
+    "preview": "vite preview",
+    "ship": "pnpm run build && wrangler deploy",
+    "dev:worker": "pnpm run build && wrangler dev"
+  },
+  "dependencies": {
+    "site-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "wrangler": "catalog:"
+  }
+}
