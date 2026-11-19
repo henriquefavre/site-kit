@@ -4,6 +4,7 @@ packages:
   - '*'
   # Standalone apps (own lockfile and CI) stay out of the sites workspace.
   - '!finanze'
+  - '!desktop-kit'
 
 # Packages allowed to run install scripts (they download their own binaries).
 allowBuilds:
