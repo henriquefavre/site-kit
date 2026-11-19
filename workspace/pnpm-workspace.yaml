@@ -2,6 +2,8 @@
 # One shared install: libraries are stored once on disk and linked into each site.
 packages:
   - '*'
+  # Standalone apps (own lockfile and CI) stay out of the sites workspace.
+  - '!finanze'
 
 # Packages allowed to run install scripts (they download their own binaries).
 allowBuilds:
